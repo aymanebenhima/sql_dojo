@@ -502,6 +502,7 @@ Ce dépôt contient un ensemble de scripts SQL pour créer une base de données 
 * **Description :** Écrire une requête qui détecte si un utilisateur s'est vu attribuer plusieurs rôles différents dans le système, et afficher son identifiant et son nombre de rôles.
 * **Hint :** Groupez par `id_user` dans `user_roles` et appliquez un `HAVING COUNT(*) > 1`.
 * **Expected Output :** *(Tableau vide car chaque utilisateur n'a qu'un rôle dans le seed)*
+
 | id_user | total_roles |
 | :--- | :--- |
 
@@ -510,6 +511,7 @@ Ce dépôt contient un ensemble de scripts SQL pour créer une base de données 
 * **Description :** Sélectionner tous les cours qui n'ont actuellement aucun Mentor assigné, ou dont le mentor assigné est désactivé (`is_active = 0`).
 * **Hint :** Utilisez un `LEFT JOIN` vers `mentor_profiles` et vérifiez l'état du compte dans la table `users`.
 * **Expected Output :** *(Tableau vide car tous les cours ont un mentor actif dans le seed)*
+
 | title | id_mentor |
 | :--- | :--- |
 
@@ -532,6 +534,7 @@ Ce dépôt contient un ensemble de scripts SQL pour créer une base de données 
 * **Description :** Trouver tous les campus (nom et ville) pour lesquels aucun membre du personnel ('STAFF') n'a été assigné.
 * **Hint :** Combinez un `NOT IN` ou un `NOT EXISTS` basé sur la table `campus_assignments` lié aux rôles de type Staff.
 * **Expected Output :** *(Tableau vide car tous les campus de test ont un staff assigné)*
+
 | name | city |
 | :--- | :--- |
 
@@ -588,6 +591,7 @@ Ce dépôt contient un ensemble de scripts SQL pour créer une base de données 
 * **Description :** Calculer l'écart entre la date d'inscription d'un étudiant et la date du jour actuel (en jours) pour voir son ancienneté dans l'école.
 * **Hint :** Utilisez la fonction de calcul de différence de date `DATEDIFF(NOW(), enrollment_date)`.
 * **Expected Output :** *(Note : Le nombre de jours dépendra de la date actuelle de votre serveur lors de l'exécution, calculé ici par rapport à la date système courante de mai 2026)*
+
 | student_number | days_of_seniority |
 | :--- | :--- |
 | STU-2025-011 | 260 |
@@ -608,6 +612,7 @@ Ce dépôt contient un ensemble de scripts SQL pour créer une base de données 
 * **Description :** Écrire une requête de nettoyage permettant de lister s'il y a des utilisateurs partageant exactement la même adresse email (insensible à la casse).
 * **Hint :** Utilisez `LOWER(email)`, `GROUP BY` et `HAVING COUNT(*) > 1`.
 * **Expected Output :** *(Tableau vide car la contrainte UNIQUE bloque nativement la création de doublons)*
+  
 | duplicated_email | total_occurrences |
 | :--- | :--- |
 
